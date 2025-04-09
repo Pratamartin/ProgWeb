@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    background-image: url('https://wallpapercave.com/wp/wp2211889.jpg');
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+  
+  .caixa-texto {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 5px solid orange;
+    border-radius: 15px;
+    width: 300px;
+    margin: 50px;
+    padding: 20px;
+  }
+  

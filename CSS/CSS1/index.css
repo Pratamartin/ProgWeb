@@ -1,0 +1,17 @@
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .caixa {
+    background-color: #ccc;
+    border: 10px solid black;
+    border-radius: 50px;
+    width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    font-size: 20px;
+  }
+  
