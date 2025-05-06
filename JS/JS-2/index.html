@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokengô Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .game-output {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <h1>JOGO</h1>
+    <ul>
+        <li>1 - Papel</li>
+        <li>2 - Pedra</li>
+        <li>3 - Tesoura</li>
+    </ul>
+    <hr>
+    <div class="game-output" id="gameOutput"></div>
+    <hr>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameOutput = document.getElementById('gameOutput');
+            let score = 0;
+            let gameActive = true;
+            
+            function playGame() {
+                while (gameActive) {
+                    const playerChoice = parseInt(prompt(
+                        "Escolha sua jogada:\n1 - Papel\n2 - Pedra\n3 - Tesoura"
+                    ));
+                    
+
+                    if (isNaN(playerChoice) || playerChoice < 1 || playerChoice > 3) {
+                        gameOutput.textContent += "\nOpção inválida! O jogo acabou.";
+                        gameActive = false;
+                        break;
+                    }
+                    
+                    const computerChoice = Math.floor(Math.random() * 3) + 1;
+                    
+                    const choices = ["", "Papel", "Pedra", "Tesoura"];
+                    gameOutput.textContent += `\nO computador jogou ${choices[computerChoice]}`;
+
+                    const result = determineWinner(playerChoice, computerChoice);
+                    
+                    if (result === "win") {
+                        gameOutput.textContent += "\nVocê ganhou!";
+                        score++;
+                    } else if (result === "lose") {
+                        gameOutput.textContent += `\nVocê perdeu! A sua pontuação foi de ${score}`;
+                        gameActive = false;
+                    } else {
+                        gameOutput.textContent += "\nA rodada empatou!";
+                    }
+                }
+            }
+            
+            function determineWinner(player, computer) {
+                if (player === computer) return "draw";
+                
+                if (
+                    (player === 1 && computer === 2) || // Papel cobre Pedra
+                    (player === 2 && computer === 3) || // Pedra quebra Tesoura
+                    (player === 3 && computer === 1)    // Tesoura corta Papel
+                ) {
+                    return "win";
+                }
+                
+                return "lose";
+            }
+            
+            playGame();
+        });
+    </script>
+</body>
+</html>

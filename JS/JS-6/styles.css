@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    cursor: none;
+}
+
+.trail-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #4285F4;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+.info {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #555;
+}
