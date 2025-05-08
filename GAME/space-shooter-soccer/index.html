@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Shooter - Futebol</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-container">
+    <div id="hud">
+      <span id="score">Pontos: 0</span>
+      <span id="lives"><img src="assets/life.png" class="life"> <img src="assets/life.png" class="life"> <img src="assets/life.png" class="life"></span>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <div id="menu">
+        <h1>Selecione sua nave</h1>
+        <div id="team-selection" class="team-grid"></div>
+      
+        <h2 id="enemy-label" style="display:none;">Selecione a nave inimiga</h2>
+        <div id="enemy-selection" class="team-grid" style="display:none;"></div>
+      
+        <button id="start-button" onclick="startGame()" style="display:none;">Iniciar Jogo</button>
+      </div>
+      
+    <div id="game-over" style="display:none;">
+      <h2>Game Over</h2>
+      <button onclick="restartGame()">Reiniciar</button>
+    </div>
+  </div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
