@@ -7,24 +7,29 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="welcome-screen">
+    <h1>Bem-vindo ao</h1>
+    <h2>Space Chute</h2>
+  </div>
+  <div id="ball-animation"></div>
   <div id="game-container">
     <div id="hud">
-      <span id="score">Pontos: 0</span>
-      <span id="lives"><img src="assets/life.png" class="life"> <img src="assets/life.png" class="life"> <img src="assets/life.png" class="life"></span>
+      <span id="score-value" class="score-label">0</span> 
+      <span id="lives"><img src="assets/ball.png" class="life"> <img src="assets/ball.png" class="life"> <img src="assets/ball.png" class="life"></span>
     </div>
     <canvas id="gameCanvas"></canvas>
     <div id="menu">
-        <h1>Selecione sua nave</h1>
+        <h1>Selecione seu time</h1>
         <div id="team-selection" class="team-grid"></div>
       
-        <h2 id="enemy-label" style="display:none;">Selecione a nave inimiga</h2>
+        <h2 id="enemy-label" style="display:none;">Selecione o adversário</h2>
         <div id="enemy-selection" class="team-grid" style="display:none;"></div>
       
         <button id="start-button" onclick="startGame()" style="display:none;">Iniciar Jogo</button>
       </div>
       
     <div id="game-over" style="display:none;">
-      <h2>Game Over</h2>
+      <h2>Fim de jogo</h2>
       <button onclick="restartGame()">Reiniciar</button>
     </div>
   </div>
