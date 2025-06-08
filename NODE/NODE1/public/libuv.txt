@@ -1,0 +1,1 @@
+Libuv é a biblioteca responsável por I/O assíncrono

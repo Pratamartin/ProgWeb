@@ -1,0 +1,1 @@
+CommonJS é o sistema padrão de módulos do Node.js

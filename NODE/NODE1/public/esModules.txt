@@ -1,0 +1,1 @@
+ESModules é a forma moderna de módulos em JavaScript

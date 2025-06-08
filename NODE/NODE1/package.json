@@ -1,0 +1,17 @@
+{
+  "name": "pw",
+  "version": "1.0.0",
+  "description": "Exercício Node.js com fs.readdir",
+  "main": "index.js",
+  "scripts": {
+  "start": "NODE_ENV=development nodemon index.js",
+  "start:prod": "NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "dotenv-flow": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
