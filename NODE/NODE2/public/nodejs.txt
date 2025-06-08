@@ -1,0 +1,1 @@
+Node.js é um ambiente de execução JavaScript server-side
