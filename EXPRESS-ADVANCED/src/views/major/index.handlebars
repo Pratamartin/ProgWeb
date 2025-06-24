@@ -1,0 +1,12 @@
+<h1>Cursos</h1>
+<ul>
+  {{#each majors}}
+    <li>{{this.name}} ({{this.code}}) -
+      <a href="/major/read/{{this.id}}">Ver</a> |
+      <a href="/major/update/{{this.id}}">Editar</a> |
+      <button onclick="deletarMajor('{{this.id}}')">Apagar</button>
+    </li>
+  {{/each}}
+</ul>
+<a href="/major/create">Novo Curso</a>
+<script src="/js/script.js"></script>

@@ -1,0 +1,6 @@
+<form action="/major/update/{{major.id}}" method="post">
+  <input type="text" name="name" value="{{major.name}}" required />
+  <input type="text" name="code" value="{{major.code}}" required />
+  <textarea name="description">{{major.description}}</textarea>
+  <button type="submit">Salvar Alterações</button>
+</form>

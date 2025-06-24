@@ -8,3 +8,6 @@ build/
 
 # Ignorar configurações de ambiente
 .env
+
+
+prisma/dev.db
