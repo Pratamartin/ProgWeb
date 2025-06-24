@@ -1,0 +1,19 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "Exercício 1 - Hello World com Express",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "start:prod": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

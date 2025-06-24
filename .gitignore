@@ -1,5 +1,10 @@
 # Ignorar dependências do Node.js
 node_modules/
 
+
+build/
+
+
+
 # Ignorar configurações de ambiente
 .env

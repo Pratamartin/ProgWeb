@@ -1,0 +1,27 @@
+{
+  "name": "express-ts-app",
+  "version": "1.0.0",
+  "description": "Exercício 2 - Express com TypeScript",
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "build": "tsc",
+    "start:prod": "node build/index.js",
+    "sass": "sass sass/main.scss public/css/main.css --watch"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "envalid": "^7.3.1",
+    "express": "^5.1.0",
+    "express-handlebars": "^7.0.7",
+    "lorem-ipsum": "^2.0.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^20.4.2",
+    "nodemon": "^3.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}
