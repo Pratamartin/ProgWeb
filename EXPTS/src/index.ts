@@ -2,12 +2,13 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import { engine } from 'express-handlebars';
+import validateEnv from './utils/validateEnv';
 
 dotenv.config();
+validateEnv();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
