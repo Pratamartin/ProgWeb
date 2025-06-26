@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { engine } from 'express-handlebars';
 import validateEnv from './utils/validateEnv';
+import { logger } from './middlewares/logger';
 
 dotenv.config();
 validateEnv();
@@ -15,6 +16,7 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use('/img', express.static(path.join(__dirname, '../public/img')));
+app.use(logger('complete'));
 
 app.get('/', (_req, res) => {
   res.send('Hello from TypeScript Express App!');

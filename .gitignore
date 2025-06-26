@@ -1,13 +1,10 @@
-# Ignorar dependências do Node.js
-node_modules/
-
-
-build/
-
-
-
-# Ignorar configurações de ambiente
+# Ignora variáveis de ambiente sensíveis
 .env
 
+# Ignora arquivos de log
+logs/
+*.log
 
-prisma/dev.db
+# Ignora diretórios de build e dependências
+build/
+node_modules/
