@@ -17,6 +17,7 @@ app.engine('handlebars', engine({ helpers }));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.urlencoded({ extended: true }));
 app.use('/css', express.static(path.join(__dirname, '../public/css')));
 app.use('/img', express.static(path.join(__dirname, '../public/img')));
 app.use(logger('complete'));

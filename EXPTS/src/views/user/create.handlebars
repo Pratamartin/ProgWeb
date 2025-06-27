@@ -1,0 +1,14 @@
+<h2>Criação de Usuário</h2>
+<form action="/user/create" method="POST">
+  <label>Nome:</label>
+  <input type="text" name="fullname" required>
+  <label>Email:</label>
+  <input type="email" name="email" required>
+  <label>Curso:</label>
+  <select name="major_id">
+    {{#each majors}}
+      <option value="{{this.id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+  <button type="submit">Enviar</button>
+</form>
