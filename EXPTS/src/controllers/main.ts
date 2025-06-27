@@ -26,7 +26,7 @@ const loremRoute = (req: Request, res: Response) => {
 
 const hb1 = (_req: Request, res: Response) => {
   res.render('hb/hb1', {
-    mensagem: 'Olá, você está aprendendo Express + HBS!'
+    mensagem: 'Olá, você está aprendendo Express + HBS!',
   });
 };
 
