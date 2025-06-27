@@ -1,10 +1,10 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import path from 'path';
+import dotenv from 'dotenv';
 import { engine } from 'express-handlebars';
-import * as helpers from './views/helpers/helpers';
 import validateEnv from './utils/validateEnv';
 import { logger } from './middlewares/logger';
+import * as helpers from './views/helpers/helpers';
 import router from './router/router';
 
 dotenv.config();
@@ -19,7 +19,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use('/img', express.static(path.join(__dirname, '../public/img')));
 app.use(logger('complete'));
-
 app.use(router);
 
 app.listen(PORT, () => {
