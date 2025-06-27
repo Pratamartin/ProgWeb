@@ -7,7 +7,7 @@ const lorem = new LoremIpsum({
 });
 
 const index = (_req: Request, res: Response) => {
-  res.send('Hello from TypeScript Express App!');
+  res.render('home', { title: 'Página Inicial', mensagem: 'usando variável!' });
 };
 
 const about = (_req: Request, res: Response) => {
