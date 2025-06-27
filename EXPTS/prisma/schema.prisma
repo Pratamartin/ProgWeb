@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Major {
+  id          String   @id @default(cuid())
+  name        String
+  code        String
+  description String
+  users       User[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model User {
+  id         String   @id @default(cuid())
+  fullname   String
+  email      String   @unique
+  major_id   String
+  major      Major    @relation(fields: [major_id], references: [id])
+  sessions   GameSession[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model GameSession {
+  id         String   @id @default(cuid())
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id])
+  score      Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
