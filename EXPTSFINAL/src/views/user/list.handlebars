@@ -1,0 +1,17 @@
+<h2>Lista de Usuários</h2>
+<table border="1">
+  <tr><th>Nome</th><th>Email</th><th>Curso</th><th>Ações</th></tr>
+  {{#each users}}
+    <tr>
+      <td>{{this.fullname}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.major.name}}</td>
+      <td>
+        <a href="/user/edit/{{this.id}}">Editar</a> |
+        <form action="/user/delete/{{this.id}}" method="POST" style="display:inline">
+          <button type="submit">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  {{/each}}
+</table>

@@ -1,0 +1,17 @@
+<h2>Lista de Cursos</h2>
+<table border="1">
+  <tr><th>Nome</th><th>Sigla</th><th>Ações</th></tr>
+  {{#each majors}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.code}}</td>
+      <td>
+        <a href="/major/edit/{{this.id}}">Editar</a> |
+        <form method="POST" action="/major/delete/{{this.id}}" style="display:inline">
+          <button type="submit">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  {{/each}}
+</table>
+<a href="/major/create">Novo Curso</a>
