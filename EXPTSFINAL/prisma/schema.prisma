@@ -21,6 +21,7 @@ model User {
   id         String   @id @default(cuid())
   fullname   String
   email      String   @unique
+  password   String   
   major_id   String
   major      Major    @relation(fields: [major_id], references: [id])
   sessions   GameSession[]

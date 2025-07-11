@@ -6,9 +6,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: expts_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpass
+      MYSQL_DATABASE: expts_db_final
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
     ports:
       - "3306:3306"
     volumes:

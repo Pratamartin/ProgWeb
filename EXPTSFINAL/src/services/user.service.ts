@@ -12,10 +12,10 @@ export const getAllUsers = async () => {
 };
 
 export const getUserById = async (id: string) => {
-  return prisma.user.findUnique({ where: { id } });
+  return prisma.user.findUnique({ where: { id }, include: { major: true } });
 };
 
-export const updateUser = async (id: string, data: CreateUserInput) => {
+export const updateUser = async (id: string, data: Partial<CreateUserInput>) => {
   return prisma.user.update({ where: { id }, data });
 };
 

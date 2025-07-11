@@ -7,7 +7,6 @@ export const createMajor = async (data: CreateMajorInput) => {
   return await prisma.major.create({ data });
 };
 
-
 export const getAllMajors = async () => {
   return await prisma.major.findMany();
 };

@@ -7,7 +7,6 @@ import {
   deleteUser,
   getAllMajors
 } from '../services/user.service';
-import { userSchema } from '../types/user.types';
 
 export const renderCreateUserForm = async (_req: Request, res: Response) => {
   const majors = await getAllMajors();
@@ -15,9 +14,12 @@ export const renderCreateUserForm = async (_req: Request, res: Response) => {
 };
 
 export const handleCreateUser = async (req: Request, res: Response) => {
-  const { error, value } = userSchema.validate(req.body);
-  if (error) return res.status(400).send(error.message);
-  await createUser(value);
+  const { fullname, email, password, major_id } = req.body;
+  if (!fullname || !email || !password || !major_id) {
+    return res.status(400).send('Todos os campos são obrigatórios.');
+  }
+
+  await createUser({ fullname, email, password, major_id });
   res.redirect('/user');
 };
 
@@ -33,9 +35,12 @@ export const renderEditUserForm = async (req: Request, res: Response) => {
 };
 
 export const handleEditUser = async (req: Request, res: Response) => {
-  const { error, value } = userSchema.validate(req.body);
-  if (error) return res.status(400).send(error.message);
-  await updateUser(req.params.id, value);
+  const { fullname, email, password, major_id } = req.body;
+  if (!fullname || !email || !password || !major_id) {
+    return res.status(400).send('Todos os campos são obrigatórios.');
+  }
+
+  await updateUser(req.params.id, { fullname, email, password, major_id });
   res.redirect('/user');
 };
 
