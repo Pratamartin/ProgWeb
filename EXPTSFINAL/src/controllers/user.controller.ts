@@ -14,9 +14,14 @@ export const renderCreateUserForm = async (_req: Request, res: Response) => {
 };
 
 export const handleCreateUser = async (req: Request, res: Response) => {
-  const { fullname, email, password, major_id } = req.body;
-  if (!fullname || !email || !password || !major_id) {
+  const { fullname, email, password, confirmPassword, major_id } = req.body;
+
+  if (!fullname || !email || !password || !confirmPassword || !major_id) {
     return res.status(400).send('Todos os campos são obrigatórios.');
+  }
+
+  if (password !== confirmPassword) {
+    return res.status(400).send('As senhas não coincidem.');
   }
 
   await createUser({ fullname, email, password, major_id });
