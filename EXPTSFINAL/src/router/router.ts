@@ -27,9 +27,14 @@ import { renderEditProfile, handleEditProfile } from '../controllers/user.contro
 
 const router = Router();
 
+router.get('/welcome', requireLogin, (req, res) => {
+  res.render('auth/welcome');
+});
+
 router.get('/', requireLogin, (req, res) => {
   res.sendFile('index.html', { root: path.join(__dirname, '../../public') });
 });
+
 router.get('/home', main.index);
 router.get('/about', main.about);
 router.get('/lorem/:count', main.loremRoute);

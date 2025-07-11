@@ -14,7 +14,7 @@ export const handleLogin = async (req: Request, res: Response) => {
   }
 
   req.session.uid = user.id;
-  res.redirect('/');
+  res.redirect('/welcome');
 };
 
 export const logout = (req: Request, res: Response) => {
