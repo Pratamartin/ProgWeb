@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Space Shooter Soccer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="/about">Sobre</a></li>
+
+        {{#if user}}
+          <li class="nav-item"><a class="nav-link" href="/">Jogar</a></li>
+          <li class="nav-item"><a class="nav-link" href="/ranking">Ranking</a></li>
+        {{else}}
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/user/create">Criar Conta</a></li>
+        {{/if}}
+      </ul>
+
+      {{#if user}}
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+          {{user.fullname}}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="/user/edit/{{user.id}}">Alterar dados cadastrais</a></li>
+          <li><a class="dropdown-item" href="/user/change-password">Alterar senha</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="/logout">Efetuar logout</a></li>
+        </ul>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</nav>

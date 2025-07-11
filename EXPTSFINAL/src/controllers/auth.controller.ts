@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import { findUserByEmail } from '../services/user.service';
-import bcrypt from 'bcryptjs';
+import { authenticateUser } from '../services/auth.service';
 
 export const renderLogin = (_req: Request, res: Response) => {
   res.render('auth/login');
@@ -8,9 +7,9 @@ export const renderLogin = (_req: Request, res: Response) => {
 
 export const handleLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
-  const user = await findUserByEmail(email);
+  const user = await authenticateUser(email, password);
 
-  if (!user || !(await bcrypt.compare(password, user.password))) {
+  if (!user) {
     return res.status(401).send('Credenciais inválidas');
   }
 

@@ -1,6 +1,9 @@
-$primary-color: #2e86de;
+@use "bootstrap/scss/bootstrap" with (
+  $primary: #2e86de
+);
+
 
 #mensagem {
-  color: $primary-color;
+  color: bootstrap.$primary;
   font-weight: bold;
 }

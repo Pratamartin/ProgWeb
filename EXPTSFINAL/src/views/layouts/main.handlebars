@@ -3,30 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS compilado -->
   <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
-    header, footer { background-color: #0074D9; color: white; padding: 10px; text-align: center; }
-    .container { display: flex; min-height: 90vh; }
-    nav, aside { width: 20%; background: #DDDDDD; padding: 10px; }
-    main { flex: 1; padding: 10px; background: #F5F5F5; }
+    footer {
+      background-color: #0074D9;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    main {
+      min-height: 85vh;
+      padding: 1rem;
+      background: #f8f9fa;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Header (comum)</h1>
-  </header>
+  {{> navbar }}
 
-  <div class="container">
-    <nav>Left Menu (comum)</nav>
-    <main>
-      {{{body}}}
-    </main>
-    <aside>Right Bar (comum)</aside>
-  </div>
+  <main class="container">
+    {{{ body }}}
+  </main>
 
   <footer>
-    Footer (comum)
+    <p>ICOMP-UFAM</p>
   </footer>
 </body>
 </html>

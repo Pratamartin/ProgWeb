@@ -8,6 +8,7 @@ import * as helpers from './views/helpers/helpers';
 import router from './router/router';
 import session from 'express-session';
 import { v4 as uuidv4 } from 'uuid';
+import { exposeUser } from './middlewares/exposeUser';
 
 dotenv.config();
 validateEnv();
@@ -25,6 +26,8 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }));
+
+app.use(exposeUser);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
