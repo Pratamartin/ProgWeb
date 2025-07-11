@@ -21,6 +21,8 @@ import * as auth from '../controllers/auth.controller';
 import { requireLogin } from '../middlewares/auth';
 import { renderRanking } from '../controllers/ranking.controller';
 import { handleSaveScore } from '../controllers/game.controller';
+import { renderChangePassword, handleChangePassword } from '../controllers/user.controller';
+import { renderEditProfile, handleEditProfile } from '../controllers/user.controller';
 
 
 const router = Router();
@@ -57,5 +59,14 @@ router.get('/logout', auth.logout);
 
 router.post('/game-session', handleSaveScore);
 router.get('/ranking', renderRanking);
+
+
+router.get('/user/change-password', renderChangePassword);
+router.post('/user/change-password', handleChangePassword);
+
+
+router.get('/user/edit-profile', renderEditProfile);
+router.post('/user/edit-profile', handleEditProfile);
+
 
 export default router;

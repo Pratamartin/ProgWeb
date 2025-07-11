@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { engine } from 'express-handlebars';
 import validateEnv from './utils/validateEnv';
 import { logger } from './middlewares/logger';
-import * as helpers from './views/helpers/helpers';
+import helpers from './views/helpers/helpers';
 import router from './router/router';
 import session from 'express-session';
 import { v4 as uuidv4 } from 'uuid';
