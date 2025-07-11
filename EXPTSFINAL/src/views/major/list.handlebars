@@ -1,17 +1,59 @@
 <h2>Lista de Cursos</h2>
+
 <table border="1">
   <tr><th>Nome</th><th>Sigla</th><th>Ações</th></tr>
   {{#each majors}}
-    <tr>
+    <tr id="major-{{this.id}}">
       <td>{{this.name}}</td>
       <td>{{this.code}}</td>
       <td>
         <a href="/major/edit/{{this.id}}">Editar</a> |
-        <form method="POST" action="/major/delete/{{this.id}}" style="display:inline">
-          <button type="submit">Excluir</button>
-        </form>
+        <button class="btn-delete" data-id="{{this.id}}" data-name="{{this.name}}">Excluir</button>
       </td>
     </tr>
   {{/each}}
 </table>
+
 <a href="/major/create">Novo Curso</a>
+
+<div id="deleteModal" style="display:none; position:fixed; top:30%; left:30%; background:#fff; padding:20px; border:1px solid #ccc; box-shadow: 0 0 10px #000;">
+  <p id="deleteMessage"></p>
+  <button id="cancelDelete">Cancelar</button>
+  <button id="confirmDelete">Confirmar</button>
+</div>
+
+<script>
+  let currentId = null;
+
+  document.querySelectorAll('.btn-delete').forEach(button => {
+    button.addEventListener('click', () => {
+      currentId = button.dataset.id;
+      const name = button.dataset.name;
+      document.getElementById('deleteMessage').textContent =
+        `Tem certeza que deseja excluir o curso "${name}"?`;
+      document.getElementById('deleteModal').style.display = 'block';
+    });
+  });
+
+  document.getElementById('cancelDelete').addEventListener('click', () => {
+    document.getElementById('deleteModal').style.display = 'none';
+    currentId = null;
+  });
+
+  document.getElementById('confirmDelete').addEventListener('click', async () => {
+    if (!currentId) return;
+
+    const res = await fetch(`/major/delete/${currentId}`, {
+      method: 'POST'
+    });
+
+    if (res.ok) {
+      document.getElementById(`major-${currentId}`).remove();
+    } else {
+      alert('Erro ao excluir curso.');
+    }
+
+    document.getElementById('deleteModal').style.display = 'none';
+    currentId = null;
+  });
+</script>

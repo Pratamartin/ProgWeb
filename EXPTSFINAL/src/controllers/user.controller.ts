@@ -45,6 +45,15 @@ export const handleEditUser = async (req: Request, res: Response) => {
 };
 
 export const handleDeleteUser = async (req: Request, res: Response) => {
-  await deleteUser(req.params.id);
-  res.redirect('/user');
+  try {
+    await deleteUser(req.params.id);
+
+    if (req.xhr || req.headers.accept?.includes('application/json')) {
+      return res.sendStatus(200);
+    }
+
+    res.redirect('/user');
+  } catch (err) {
+    res.status(500).send('Erro ao excluir usuário.');
+  }
 };

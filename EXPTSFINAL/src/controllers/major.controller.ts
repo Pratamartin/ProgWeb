@@ -44,6 +44,15 @@ export const handleEditMajor = async (req: Request, res: Response) => {
 };
 
 export const handleDeleteMajor = async (req: Request, res: Response) => {
-  await deleteMajor(req.params.id);
-  res.redirect('/major');
+  try {
+    await deleteMajor(req.params.id);
+
+    if (req.xhr || req.headers.accept?.includes('application/json')) {
+      return res.sendStatus(200);
+    }
+
+    res.redirect('/major');
+  } catch (err) {
+    res.status(500).send('Erro ao excluir curso.');
+  }
 };
