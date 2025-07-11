@@ -1,0 +1,174 @@
+/* ========== GLOBAL ========== */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: black;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+#game-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ========== CANVAS DO JOGO ========== */
+#gameCanvas {
+  display: block;
+  width: 90vw;
+  height: 67.5vw; /* 16:9 aspect ratio */
+  max-width: 800px;
+  max-height: 600px;
+  margin: 0 auto;
+  background: url('assets/campo-de-futebol-verde_225004-1137.png') no-repeat center center;
+  background-size: cover;
+  border: 2px solid white;
+}
+
+
+/* ========== HUD (Pontuação + Vidas) ========== */
+#hud {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00ff88;
+}
+
+.life {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.score-label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ff88;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px #00ff88;
+  text-align: center;
+  min-width: 60px;
+}
+
+/* ========== TELA DE MENU E GAME OVER ========== */
+#menu,
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+#game-over h2 {
+  margin-bottom: 1rem;
+  color: #ff5555;
+}
+
+/* ========== BOTÕES ========== */
+#start-button,
+#game-over button {
+  display: block;
+  margin: 1.25rem auto 0 auto;
+  background-color: #00ff88;
+  color: #000;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#start-button:hover,
+#game-over button:hover {
+  background-color: #00e072;
+  transform: scale(1.05);
+}
+
+/* ========== GRADE DE TIMES ========== */
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.team-grid img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: 0.5rem;
+  transition: transform 0.2s, border 0.2s;
+}
+
+.team-grid img:hover {
+  transform: scale(1.1);
+}
+
+.team-grid img.selected {
+  border: 3px solid yellow;
+}
+
+/* ========== TELA DE BOAS-VINDAS ========== */
+#welcome-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: lime;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 999;
+  animation: fadeOut 3s ease-out 2s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+

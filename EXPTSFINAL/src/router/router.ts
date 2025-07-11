@@ -16,10 +16,17 @@ import {
   handleDeleteUser
 } from '../controllers/user.controller';
 import main from '../controllers/main';
+import path from 'path';
 
 const router = Router();
 
-router.get('/', main.index);
+router.get('/', (req, res) => {
+  res.sendFile('index.html', {
+    root: path.join(__dirname, '../../public'),
+  });
+});
+
+router.get('/home', main.index);
 router.get('/about', main.about);
 router.get('/lorem/:count', main.loremRoute);
 router.get('/hb1', main.hb1);
