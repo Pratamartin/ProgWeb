@@ -37,3 +37,7 @@ export const deleteUser = async (id: string) => {
 export const getAllMajors = async () => {
   return prisma.major.findMany();
 };
+
+export const findUserByEmail = async (email: string) => {
+  return prisma.user.findUnique({ where: { email } });
+};

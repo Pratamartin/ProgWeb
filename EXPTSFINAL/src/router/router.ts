@@ -17,15 +17,17 @@ import {
 } from '../controllers/user.controller';
 import main from '../controllers/main';
 import path from 'path';
+import * as auth from '../controllers/auth.controller';
+import { requireLogin } from '../middlewares/auth';
+import { renderRanking } from '../controllers/ranking.controller';
+import { handleSaveScore } from '../controllers/game.controller';
+
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.sendFile('index.html', {
-    root: path.join(__dirname, '../../public'),
-  });
+router.get('/', requireLogin, (req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, '../../public') });
 });
-
 router.get('/home', main.index);
 router.get('/about', main.about);
 router.get('/lorem/:count', main.loremRoute);
@@ -48,5 +50,12 @@ router.post('/user/create', handleCreateUser);
 router.get('/user/edit/:id', renderEditUserForm);
 router.post('/user/edit/:id', handleEditUser);
 router.post('/user/delete/:id', handleDeleteUser);
+
+router.get('/login', auth.renderLogin);
+router.post('/login', auth.handleLogin);
+router.get('/logout', auth.logout);
+
+router.post('/game-session', handleSaveScore);
+router.get('/ranking', renderRanking);
 
 export default router;

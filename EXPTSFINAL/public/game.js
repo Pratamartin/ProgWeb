@@ -3,6 +3,9 @@ import { updateBullets, drawBullets } from './bullet.js';
 import { generateObstacles, updateObstacles, drawObstacles } from './obstacle.js';
 import { checkCollisions } from './collision.js';
 import { updateHUD } from './hud.js';
+import { enviarPontuacao } from './network.js';
+
+
 
 export let gameRunning = false;
 export let paused = false;
@@ -40,9 +43,11 @@ export function updateGame(setup) {
   requestAnimationFrame(() => updateGame(setup));
 }
 
-export function gameOver() {
+export function gameOver(setup) {
   gameRunning = false;
   document.getElementById("game-over").style.display = "block";
+
+  enviarPontuacao(setup.score); 
 }
 
 export function restartGame(setup) {

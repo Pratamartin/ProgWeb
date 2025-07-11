@@ -42,9 +42,10 @@ function addScore(type, setup) {
 }
 
 function loseLife(setup) {
+  console.log(setup);
   setup.lives--;
   setup.player.damaged = true;
   setTimeout(() => setup.player.damaged = false, 500);
   updateHUD(setup);
-  if (setup.lives <= 0) gameOver();
+  if (setup.lives <= 0) gameOver(setup);
 }

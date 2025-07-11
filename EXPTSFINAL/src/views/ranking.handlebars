@@ -1,0 +1,8 @@
+<h2>Top 10 Jogadores</h2>
+<table border="1">
+  <tr><th>Nome</th><th>Pontuação</th></tr>
+  {{#each ranking}}
+    <tr><td>{{this.name}}</td><td>{{this.score}}</td></tr>
+  {{/each}}
+</table>
+<a href="/">Voltar ao jogo</a>
