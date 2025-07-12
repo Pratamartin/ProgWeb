@@ -1,6 +1,7 @@
-# ExpTs - Express com TypeScript + Prisma + Handlebars
+# ExpTsFinal - Express com TypeScript + Prisma + Handlebars + Game
 
-Este é um projeto de aplicação web usando **Express**, **TypeScript**, **Prisma** e **Handlebars** para gerenciamento de usuários e cursos (majors).
+
+Projeto da disciplina de Programação Web que integra recursos de gerenciamento acadêmico com um jogo *Space Shooter Soccer* na página inicial. A aplicação é construída com **Node.js**, **Express**, **TypeScript**, **Prisma**, **Handlebars** e **MySQL**, e inclui autenticação, sessão, ranking e edição de usuários.
 
 ---
 
@@ -18,7 +19,7 @@ Este é um projeto de aplicação web usando **Express**, **TypeScript**, **Pris
 
 ```bash
 git clone https://github.com/Pratamartin/ProgWeb.git
-cd EXPTS
+cd EXPTSFINAL
 ```
 
 ### 2. Instale as dependências
@@ -56,9 +57,11 @@ Acesse: [http://localhost:3000](http://localhost:3000)
 Crie um arquivo `.env` com base em `.env.example`:
 
 ```env
-DATABASE_URL="mysql://user:userpass@localhost:3306/expts_db"
 PORT=3000
 LOGS_PATH=logs/access.log
+DATABASE_URL="mysql://root:root@localhost:3306/expts_db"
+SESSION_SECRET=Hi9Cf#mK98
+
 ```
 
 ---
@@ -71,8 +74,8 @@ LOGS_PATH=logs/access.log
 | GET    | `/user`            | Lista todos os usuários       |
 | GET    | `/user/create`     | Formulário para novo usuário  |
 | POST   | `/user/create`     | Cria um novo usuário          |
-| GET    | `/user/edit/:id`   | Edita um usuário              |
-| POST   | `/user/edit/:id`   | Atualiza o usuário            |
+| GET    | `/user/edit-profile`   | Edita um usuário              |
+| POST   | `/user/edit-profile`   | Atualiza o usuário            |
 | GET    | `/user/delete/:id` | Exclui um usuário             |
 
 ---
@@ -93,7 +96,6 @@ LOGS_PATH=logs/access.log
 
 - Logs de acesso são salvos no arquivo definido em `LOGS_PATH`
 - Usa `Handlebars` como engine de visualização (`views/`)
-- Usa `Joi` para validação de formulário no backend
 
 ---
 
