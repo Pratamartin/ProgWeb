@@ -22,12 +22,16 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
   genid: () => uuidv4(),
-  secret: 'Hi9Cf#mK98',
-  resave: true,
-  saveUninitialized: false
+  secret: process.env.SESSION_SECRET as string,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+  },
 }));
 
-app.use(exposeUser);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
@@ -52,7 +56,7 @@ app.use('/style.css', express.static(path.join(__dirname, '../public/style.css')
 
 
 app.use(logger('complete'));
-
+app.use(exposeUser);
 app.use(router);
 
 app.listen(PORT, () => {
