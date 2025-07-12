@@ -1,42 +1,61 @@
-<h2>Lista de Usuários</h2>
+<div class="container mt-5">
+  <h2 class="mb-4">Lista de Usuários</h2>
 
-<table border="1">
-  <tr><th>Nome</th><th>Email</th><th>Curso</th><th>Ações</th></tr>
-  {{#each users}}
-    <tr id="user-{{this.id}}">
-      <td>{{this.fullname}}</td>
-      <td>{{this.email}}</td>
-      <td>{{this.major.name}}</td>
-      <td>
-        <a href="/user/edit/{{this.id}}">Editar</a> |
-        <button class="btn-delete" data-id="{{this.id}}" data-name="{{this.fullname}}">Excluir</button>
-      </td>
-    </tr>
-  {{/each}}
-</table>
+  <table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Curso</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+        <tr id="user-{{this.id}}">
+          <td>{{this.fullname}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.major.name}}</td>
+          <td>
+            <a href="/user/edit-profile" class="btn btn-sm btn-warning">Editar</a>
+            <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="{{this.id}}" data-name="{{this.fullname}}">Excluir</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
 
-<div id="deleteModal" style="display:none; position:fixed; top:30%; left:30%; background:#fff; padding:20px; border:1px solid #ccc; box-shadow: 0 0 10px #000;">
-  <p id="deleteMessage"></p>
-  <button id="cancelDelete">Cancelar</button>
-  <button id="confirmDelete">Confirmar</button>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancelDelete" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="confirmDelete" class="btn btn-danger">Confirmar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
   let currentId = null;
 
+  const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+
   document.querySelectorAll('.btn-delete').forEach(button => {
     button.addEventListener('click', () => {
       currentId = button.dataset.id;
       const name = button.dataset.name;
-      document.getElementById('deleteMessage').textContent =
-        `Tem certeza que deseja excluir "${name}"?`;
-      document.getElementById('deleteModal').style.display = 'block';
+      document.getElementById('deleteMessage').textContent = `Tem certeza que deseja excluir "${name}"?`;
+      modal.show();
     });
-  });
-
-  document.getElementById('cancelDelete').addEventListener('click', () => {
-    document.getElementById('deleteModal').style.display = 'none';
-    currentId = null;
   });
 
   document.getElementById('confirmDelete').addEventListener('click', async () => {
@@ -52,7 +71,7 @@
       alert('Erro ao excluir usuário.');
     }
 
-    document.getElementById('deleteModal').style.display = 'none';
+    modal.hide();
     currentId = null;
   });
 </script>

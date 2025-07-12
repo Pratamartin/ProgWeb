@@ -1,8 +1,11 @@
-<div>
-  <h3>Alguns professores do IComp/UFAM:</h3>
-  <ul>
+<div class="container mt-5">
+  <h3 class="mb-3">Alguns professores do IComp/UFAM:</h3>
+
+  <ul class="list-group">
     {{#each professores}}
-      <li>{{nome}} - sala {{sala}}</li>
+      <li class="list-group-item">
+        {{nome}} – sala {{sala}}
+      </li>
     {{/each}}
   </ul>
 </div>

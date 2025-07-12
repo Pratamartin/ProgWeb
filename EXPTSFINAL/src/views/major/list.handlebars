@@ -1,29 +1,53 @@
-<h2>Lista de Cursos</h2>
+<div class="container mt-5">
+  <h2 class="mb-4">Lista de Cursos</h2>
 
-<table border="1">
-  <tr><th>Nome</th><th>Sigla</th><th>Ações</th></tr>
-  {{#each majors}}
-    <tr id="major-{{this.id}}">
-      <td>{{this.name}}</td>
-      <td>{{this.code}}</td>
-      <td>
-        <a href="/major/edit/{{this.id}}">Editar</a> |
-        <button class="btn-delete" data-id="{{this.id}}" data-name="{{this.name}}">Excluir</button>
-      </td>
-    </tr>
-  {{/each}}
-</table>
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each majors}}
+        <tr id="major-{{this.id}}">
+          <td>{{this.name}}</td>
+          <td>{{this.code}}</td>
+          <td>
+            <a href="/major/edit/{{this.id}}" class="btn btn-sm btn-warning">Editar</a>
+            <button class="btn btn-sm btn-danger btn-delete" data-id="{{this.id}}" data-name="{{this.name}}">Excluir</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-<a href="/major/create">Novo Curso</a>
+  <a href="/major/create" class="btn btn-primary">+ Novo Curso</a>
+</div>
 
-<div id="deleteModal" style="display:none; position:fixed; top:30%; left:30%; background:#fff; padding:20px; border:1px solid #ccc; box-shadow: 0 0 10px #000;">
-  <p id="deleteMessage"></p>
-  <button id="cancelDelete">Cancelar</button>
-  <button id="confirmDelete">Confirmar</button>
+<!-- Modal de confirmação -->
+<div id="deleteModal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Confirmar Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="confirmDelete" class="btn btn-danger">Confirmar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
   let currentId = null;
+  const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
   document.querySelectorAll('.btn-delete').forEach(button => {
     button.addEventListener('click', () => {
@@ -31,21 +55,14 @@
       const name = button.dataset.name;
       document.getElementById('deleteMessage').textContent =
         `Tem certeza que deseja excluir o curso "${name}"?`;
-      document.getElementById('deleteModal').style.display = 'block';
+      deleteModal.show();
     });
-  });
-
-  document.getElementById('cancelDelete').addEventListener('click', () => {
-    document.getElementById('deleteModal').style.display = 'none';
-    currentId = null;
   });
 
   document.getElementById('confirmDelete').addEventListener('click', async () => {
     if (!currentId) return;
 
-    const res = await fetch(`/major/delete/${currentId}`, {
-      method: 'POST'
-    });
+    const res = await fetch(`/major/delete/${currentId}`, { method: 'POST' });
 
     if (res.ok) {
       document.getElementById(`major-${currentId}`).remove();
@@ -53,7 +70,7 @@
       alert('Erro ao excluir curso.');
     }
 
-    document.getElementById('deleteModal').style.display = 'none';
+    deleteModal.hide();
     currentId = null;
   });
 </script>

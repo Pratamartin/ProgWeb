@@ -1,23 +1,36 @@
-<h2>Criar Novo Usuário</h2>
-<form action="/user/create" method="POST">
-  <label>Nome completo:</label>
-  <input type="text" name="fullname" required><br>
+<div class="container mt-5" style="max-width: 600px;">
+  <h2 class="mb-4">Criar Novo Usuário</h2>
 
-  <label>Email:</label>
-  <input type="email" name="email" required><br>
+  <form action="/user/create" method="POST">
+    <div class="mb-3">
+      <label for="fullname" class="form-label">Nome completo</label>
+      <input type="text" class="form-control" id="fullname" name="fullname" required>
+    </div>
 
-  <label>Senha:</label>
-  <input type="password" name="password" required><br>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
 
-  <label>Repetir Senha:</label>
-  <input type="password" name="confirmPassword" required><br>
+    <div class="mb-3">
+      <label for="password" class="form-label">Senha</label>
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
 
-  <label>Curso:</label>
-  <select name="major_id" required>
-    {{#each majors}}
-      <option value="{{this.id}}">{{this.name}}</option>
-    {{/each}}
-  </select><br><br>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Repetir Senha</label>
+      <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+    </div>
 
-  <button type="submit">Cadastrar</button>
-</form>
+    <div class="mb-3">
+      <label for="major_id" class="form-label">Curso</label>
+      <select class="form-select" id="major_id" name="major_id" required>
+        {{#each majors}}
+          <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </form>
+</div>

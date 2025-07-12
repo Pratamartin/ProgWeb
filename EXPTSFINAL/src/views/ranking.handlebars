@@ -1,8 +1,22 @@
-<h2>Top 10 Jogadores</h2>
-<table border="1">
-  <tr><th>Nome</th><th>Pontuação</th></tr>
-  {{#each ranking}}
-    <tr><td>{{this.name}}</td><td>{{this.score}}</td></tr>
-  {{/each}}
-</table>
-<a href="/">Voltar ao jogo</a>
+<div class="container mt-5">
+  <h2 class="mb-4">Top 10 Jogadores</h2>
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Nome</th>
+        <th>Pontuação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each ranking}}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <a href="/" class="btn btn-primary mt-3">Voltar ao jogo</a>
+</div>

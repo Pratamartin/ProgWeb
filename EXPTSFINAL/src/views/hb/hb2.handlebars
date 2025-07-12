@@ -1,7 +1,9 @@
-<div>
+<div class="container mt-5 text-center">
   {{#if poweredByNodejs}}
-    <h1>{{name}} {{type}}</h1>
+    <h1 class="text-success">{{name}} <small class="text-muted">({{type}})</small></h1>
+    <p class="lead">Essa aplicação é baseada em Node.js</p>
   {{else}}
-    <h1>Aplicação não baseada em Node.js</h1>
+    <h1 class="text-danger">Aplicação não baseada em Node.js</h1>
+    <p class="text-muted">Este sistema usa outra tecnologia.</p>
   {{/if}}
 </div>

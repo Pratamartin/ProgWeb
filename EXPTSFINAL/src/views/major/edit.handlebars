@@ -1,17 +1,22 @@
-<h2>Editar Curso</h2>
-<form action="/major/edit/{{major.id}}" method="POST">
-  <div>
-    <label for="name">Nome:</label>
-    <input type="text" name="name" value="{{major.name}}" required>
-  </div>
-  <div>
-    <label for="code">Sigla:</label>
-    <input type="text" name="code" value="{{major.code}}" maxlength="4" required>
-  </div>
-  <div>
-    <label>Descrição:</label>
-    <textarea name="description" required></textarea>
-  </div>
+<div class="container mt-5" style="max-width: 600px;">
+  <h2 class="mb-4">Editar Curso</h2>
 
-  <button type="submit">Salvar</button>
-</form>
+  <form action="/major/edit/{{major.id}}" method="POST">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nome</label>
+      <input type="text" name="name" id="name" value="{{major.name}}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="code" class="form-label">Sigla</label>
+      <input type="text" name="code" id="code" value="{{major.code}}" maxlength="4" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Descrição</label>
+      <textarea name="description" id="description" class="form-control" rows="3" required>{{major.description}}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+</div>

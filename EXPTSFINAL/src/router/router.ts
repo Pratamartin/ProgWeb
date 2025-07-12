@@ -54,8 +54,8 @@ router.post('/major/delete/:id', handleDeleteMajor);
 router.get('/user', renderUserList);
 router.get('/user/create', renderCreateUserForm);
 router.post('/user/create', handleCreateUser);
-router.get('/user/edit/:id', renderEditUserForm);
-router.post('/user/edit/:id', handleEditUser);
+router.get('/user/edit-profile', renderEditProfile);
+router.post('/user/edit-profile', handleEditProfile);
 router.post('/user/delete/:id', handleDeleteUser);
 
 router.get('/login', auth.renderLogin);
